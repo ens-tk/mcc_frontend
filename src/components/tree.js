@@ -32,6 +32,33 @@ function Tree() {
     return null;
   };
 
+  const handleDelete = () => {
+    if (!selectedNodeId) return alert("Сначала выберите элемент!");
+
+    const deleteNode = (nodes) =>
+      nodes
+        .filter((n) => n.id !== selectedNodeId)
+        .map((n) => ({ ...n, children: deleteNode(n.children) }));
+
+    setTreeData(deleteNode(treeData));
+    setSelectedNodeId(null);
+  };
+
+  const handleEdit = () => {
+    if (!selectedNodeId) return alert("Сначала выберите элемент!");
+
+    const newTitle = prompt("Введите новое название:");
+    if (!newTitle) return;
+
+    const updatedTree = structuredClone(treeData);
+    const node = findNodeById(updatedTree, selectedNodeId);
+    if (node) {
+      node.title = newTitle;
+      setTreeData(updatedTree);
+    }
+  };
+
+
   const handleAddChild = () => {
 
     const updatedTree = structuredClone(treeData);
