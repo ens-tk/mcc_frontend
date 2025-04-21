@@ -1,5 +1,9 @@
 function TreeNode({ node, selectedId, setSelected, depth = 0 }) {
-    const isSelected = node.id === selectedId;
+    let isSelected = false;
+    if (node.id === selectedId) {
+      isSelected = true;
+    }
+    
   
     return (
       <div onClick={(e) => { e.stopPropagation(); setSelected(node.id); }}>

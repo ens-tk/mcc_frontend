@@ -37,7 +37,7 @@ function Tree() {
   };
 
   const handleAddChild = () => {
-    if (!selectedNodeId) return alert("Сначала выберите элемент!");
+    if (!selectedNodeId) return alert("Сначала нужно выбрать элемент!");
 
     const name = prompt("Введите название дочернего элемента:");
     if (!name) return;
@@ -55,7 +55,7 @@ function Tree() {
   };
 
   const handleDelete = () => {
-    if (!selectedNodeId) return alert("Сначала выберите элемент!");
+    if (!selectedNodeId) return alert("Сначала нужно выбрать элемент!");
 
     const deleteNode = (nodes) =>
       nodes
@@ -67,7 +67,7 @@ function Tree() {
   };
 
   const handleEdit = () => {
-    if (!selectedNodeId) return alert("Сначала выберите элемент!");
+    if (!selectedNodeId) return alert("Сначала нужно выбрать элемент!");
 
     const newTitle = prompt("Введите новое название:");
     if (!newTitle) return;
@@ -88,6 +88,7 @@ function Tree() {
         <button onClick={handleAddRoot}>Добавить корневой</button>
         <button onClick={handleAddChild}>Добавить дочерний</button>
         <button onClick={handleEdit}>Редактировать</button>
+        <button onClick={handleDelete}>Удалить</button>
         <button onClick={handleReset}>Сбросить</button>
       </div>
 
